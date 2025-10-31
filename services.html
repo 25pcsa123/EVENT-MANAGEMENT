@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — MakeItRight Event Management</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #ff0077;
+      --secondary: #ffc107;
+      --dark: #1b1b1b;
+      --light: #ffffff;
+      --card-bg: #222;
+    }
+
+    * 
+	{ 
+		margin:0; 
+		padding:0; 
+		box-sizing:border-box; 
+		font-family:'Poppins',sans-serif; 
+		scroll-behavior:smooth; 
+	}
+	body 
+	{
+		background-color: var(--dark); 
+		color: var(--light); 
+	}
+
+    header
+		{ position: fixed; 
+		top:0; width:100%;
+		background: rgba(0,0,0,0.6);
+		backdrop-filter: blur(6px);
+		display:flex; 
+		justify-content:space-between; 
+		align-items:center;
+		padding:15px 70px; 
+		z-index:1000;								
+		}
+    header h1
+	{ 
+		color: var(--secondary);
+		font-size:1.8rem; 
+	}
+	.logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--secondary);
+      background: #fff;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+    }
+
+    nav ul
+	{ 	list-style:none;
+		display:flex; gap:30px; 
+	}
+    nav ul li a
+		{ text-decoration:none; 
+		color: var(--light); 
+		font-weight:500; 
+		transition:0.3s; 
+	}
+    nav ul li a:hover
+	{ 	
+		color: var(--secondary); 
+	}
+
+    .hero 
+	{ 
+	background: url('https://images.unsplash.com/photo-1529634898459-92182e662c6e?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; position:relative; }
+    .hero::after 
+	{ 
+		content:''; position:absolute; 
+		top:0; left:0;
+		width:100%;
+		height:100%;
+		background: rgba(0,0,0,0.6); 
+	}
+    .hero h2 
+	{ position:relative; 
+		z-index:1; font-size:2.8rem; 
+		color: var(--secondary); 
+		animation: fadeIn 2s ease-in-out;		
+	}
+    @keyframes fadeIn
+	{
+		from
+	{
+		opacity:0;
+		transform:translateY(30px);
+	}
+	to
+	{
+		opacity:1; 
+		transform:translateY(0);
+	} 
+	}
+
+    .services-categories 
+	{ padding:60px 40px; 
+		text-align:center; 
+		background-color: var(--dark);
+	}
+    .services-categories h2 
+	{ font-size:2.5rem; 
+		margin-bottom:40px; 
+		color: var(--secondary);
+	}
+    .categories-container 
+		{ display:flex;
+		flex-wrap:wrap;
+		gap:30px; 
+		justify-content:center; 
+	}
+    .category-card 
+	{
+		background: var(--card-bg);
+		padding:25px; border-radius:15px;
+		width:250px;
+		box-shadow:0 5px 15px rgba(0,0,0,0.3);
+		transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+	}
+	.category-card i 
+	{ 
+		font-size:2.5rem;
+		color: var(--primary); 
+		margin-bottom:15px; 
+	}
+    .category-card h3 
+	{ 	margin-bottom:10px; 
+		font-size:1.3rem;
+		color: var(--secondary); 
+	}
+    .category-card p 
+		{ font-size:0.95rem; 
+		color:#ccc; 
+		line-height:1.4;
+	}
+    .category-card:hover
+	{ 
+		transform:translateY(-10px) scale(1.05);
+		background:#333; 
+		box-shadow:0 10px 25px rgba(0,0,0,0.5);
+	}
+
+    .services
+	{ 
+		padding:100px 60px; 
+		display:grid;
+		grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); 
+		gap:40px; 
+	}
+    .card
+	{ 
+		background: var(--card-bg);
+		border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.3); 
+		overflow:hidden; 
+		transition: transform 0.4s, box-shadow 0.4s;
+	}
+    .card:hover
+	{
+		transform:translateY(-8px);
+		box-shadow:0 8px 25px rgba(255,255,255,0.1);
+	}
+	.card img 
+	{
+		width:100%; height:200px;
+		object-fit:cover; 
+		}
+    .card-content 
+	{	
+		padding:20px;
+	}
+    .card-content h3
+	{ 	color: var(--secondary); 
+		margin-bottom:10px;
+	}
+    .card-content p
+	{	color:#ccc; 
+		line-height:1.5; 
+		font-size:0.95rem;
+		margin-bottom:15px;
+	}
+    .price 
+	{ font-size:1.1rem;
+		font-weight:600; 
+		color: var(--primary);
+	}
+
+    .event-types
+	{ 
+		padding:60px 10%;
+		background-color:#111;
+	}
+    .event-types h2
+	{
+		text-align:center; 
+		color:#ffc107; 
+		font-size:2rem; 
+		margin-bottom:50px;
+	}
+
+    .event-buttons { text-align:center; margin-bottom:40px; }
+    .event-buttons button { padding:10px 20px; margin:0 10px; border:none; border-radius:8px; background:#555; color:#fff; cursor:pointer; font-weight:500; transition:0.3s; }
+    .event-buttons button.active-btn { background: var(--primary); }
+
+    .event-item
+		{ display:flex; 
+		align-items:center;
+		justify-content:space-between;
+		gap:40px; margin-bottom:60px;
+		flex-wrap:wrap;
+	}
+    .event-item img
+	{
+		width: 400px;        
+		height: 250px;       
+		object-fit: cover;   
+		border-radius: 15px;
+		box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+	}
+
+    .event-item div
+	{ 
+		width:50%; 
+		min-width:300px;
+	}
+    .event-item h3
+	{ 
+		color:#ffc107;
+		font-size:1.8rem; 
+		margin-bottom:15px; 
+	}
+    .event-item p { line-height:1.6; color:#ccc; }
+
+    .order-now
+	{	padding:60px 40px;
+		text-align:center; 
+		background:#111;
+	}
+    .order-now h2
+	{	color: var(--secondary);
+		margin-bottom:20px;
+	}
+    .order-now button
+	{ padding:12px 25px; 
+		font-size:1rem; border:none; border-radius:8px;
+		background: var(--primary);
+		color:#fff;
+		cursor:pointer;
+	}
+
+    /* MODAL FORM */
+    #modalForm { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:2000; }
+    #modalForm .form-container { background:#222; padding:30px; border-radius:12px; width:90%; max-width:500px; position:relative; }
+    #modalForm .form-container span { position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.5rem; color:#ff0077; }
+    #modalForm input, #modalForm select, #modalForm textarea, #modalForm button { width:100%; padding:10px; margin-bottom:15px; border-radius:5px; border:none; font-size:1rem; }
+    #modalForm button { background:#ff0077; color:#fff; cursor:pointer; }
+    #modalForm button:hover { background:#ff3399; }
+
+    footer 
+	{ background:#000; 
+	text-align:center;
+	padding:20px; color:#aaa;
+	font-size:0.9rem; 
+	margin-top:50px;
+	}
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+	<header>
+  <div class="logo">
+      <img src="images/logo's.jpg" alt="Event Logo">
+      <h1><b>MakeItRight Events</b></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="services.html" style="color: var(--secondary);">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+		<li><a href="blog.html">Blog</a></li>
+        <li><a href="prize.html">Prize</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Our Premium Services</h2>
+  </section>
+
+  <!-- SERVICE CATEGORIES -->
+  <section class="services-categories">
+    <h2>Service Categories</h2>
+    <div class="categories-container">
+      <div class="category-card">
+        <i class="fas fa-briefcase"></i>
+        <h3>Corporate Events</h3>
+        <p>Professional corporate event management including conference, seminar, product launches, and team-building activities.</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-users"></i>
+        <h3>Social Events</h3>
+        <p>Planning and organizing events like weddings, parties, and festivals, creating a smooth and memorable experience.</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-music"></i>
+        <h3>Cultural & Entertainment</h3>
+        <p>Concerts, festivals and entertainment events with full production management and technical coordination.</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-video"></i>
+        <h3>Virtual & Hybrid Events</h3>
+        <p>Hybrid events mix online and in-person participation. Flexible, cost-effective, and allow Webinars, Online Summits, and Streaming-enabled Events.</p>
+      </div>
+      <div class="category-card">
+        <i class="fas fa-handshake"></i>
+        <h3>MICE Services</h3>
+        <p>Meetings, Incentives, Conferences, Exhibitions. Planning and managing business events and conferences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES CARDS -->
+  <section class="services">
+    <div class="card">
+      <img src="images/venue selection.jpg" alt="Venue Selection">
+      <div class="card-content">
+        <h3>Venue Selection</h3>
+        <p>Choose from a wide range of luxurious indoor and outdoor venues that perfectly match your event style and guest capacity.</p>							
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/invitation design.jpg" alt="Invitation Card">
+      <div class="card-content">
+        <h3>Invitation Card</h3>
+        <p>Custom-designed invitations in digital and print formats to match your event theme beautifully.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/musicc.jpg" alt="Entertainment">
+      <div class="card-content">
+        <h3>Entertainment</h3>
+        <p>From live music and DJs to stage performances and fun games — we bring energy to every celebration.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/catering.jpg" alt="Food and Drinks">
+      <div class="card-content">
+        <h3>Food & Drinks</h3>
+        <p>Delight your guests with delicious menus and refreshing beverages crafted by our expert chefs.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/camera.jpg" alt="Photos and Videos">
+      <div class="card-content">
+        <h3>Photos & Videos</h3>
+        <p>Capture every moment of your event with professional photography and cinematic video coverage.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/custom food.jpg" alt="Custom Food">
+      <div class="card-content">
+        <h3>Custom Food</h3>
+        <p>Personalize your event menu with regional, fusion, or themed food options prepared to perfection.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/weedings.jpg" alt="Stage Decoration">
+      <div class="card-content">
+        <h3>Stage Decoration</h3>
+        <p>Elegant floral, modern, or themed stage décor that transforms your event into a breathtaking experience.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/outdoor party.jpg" alt="Event Coordination">
+      <div class="card-content">
+        <h3>Event Coordination</h3>
+        <p>Professional planners ensuring every detail — from scheduling to guest management — runs seamlessly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDOOR / OUTDOOR EVENTS -->
+  <section class="event-types">
+    <div class="event-buttons">
+      <button onclick="showEvents('indoor')" class="active-btn">Indoor Events</button>
+      <button onclick="showEvents('outdoor')">Outdoor Events</button>
+    </div>
+
+    <!-- INDOOR EVENTS -->
+    <div id="indoor" style="display:block;">
+      <!-- WEDDING -->
+      <div class="event-item">
+        <img src="images/wedding plans.jpg" alt="Wedding Event">
+        <div>
+          <h3>Wedding Events</h3>
+          <p>Our wedding event planning offers an elegant and luxurious experience with stunning decorations, tailored catering, and professional coordination. Every moment is unforgettable and stress-free.</p>
+        </div>
+      </div>
+      <!-- PRIVATE PARTIES -->
+      <div class="event-item" style="flex-direction:row-reverse;">
+        <img src="images/privates.jpg" alt="Private Parties">
+        <div>
+          <h3>Private Parties</h3>
+          <p>Whether it’s an anniversary, engagement, or exclusive social night, we design intimate party experiences filled with beautiful décor, vibrant entertainment, and exquisite food.</p>
+        </div>
+      </div>
+      <!-- BIRTHDAY -->
+      <div class="event-item">
+        <img src="images/out birthday.jpg" alt="Birthday Events">
+        <div>
+          <h3>Birthday Events</h3>
+          <p>Celebrate birthdays in style with custom themes, cake design, decorations, games, and fun activities. Creativity and joy are infused into every birthday celebration.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTDOOR EVENTS -->
+    <div id="outdoor" style="display:none;">
+      <!-- BEACH PARTY -->
+      <div class="event-item">
+        <img src="images/beachh.jpg" alt="Beach Party">
+        <div>
+          <h3>Beach Party</h3>
+          <p>Enjoy the sun, sand, and sea with a fun-filled beach party. We provide themed décor, tropical food, music, and games to create an unforgettable outdoor experience.</p>
+        </div>
+      </div>
+      <!-- CORPORATE OUTDOOR -->
+      <div class="event-item" style="flex-direction:row-reverse;">
+        <img src="images/outdoor party.jpg" alt="Corporate Outdoor Meet">
+        <div>
+          <h3>Corporate Outdoor Meet</h3>
+          <p>Organize professional outdoor meetings, team-building exercises, and networking events in scenic locations. All logistics are handled for a productive and refreshing experience.</p>
+        </div>
+      </div>
+      <!-- MUSIC FESTIVAL -->
+      <div class="event-item">
+        <img src="images/music.jpg" alt="Music Festival">
+        <div>
+          <h3>Music Festival</h3>
+          <p>Experience live outdoor music with stage setup, lighting, sound, and artist coordination. Perfect for festivals, concerts, and large-scale entertainment events.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER NOW -->
+  <section class="order-now">
+    <h2>Secure Your Event Now</h2>
+    <button id="openForm">Order Now / Secure</button>
+  </section>
+
+  <!-- MODAL FORM -->
+  <div id="modalForm">
+    <div class="form-container">
+      <span id="closeForm">&times;</span>
+      <h2 style="color:#ffc107; text-align:center; margin-bottom:20px;">Book Your Event</h2>
+      <form id="bookingForm">
+        <label>Customer Name</label>
+        <input type="text" name="name" required>
+        <label>Event Type</label>
+        <select name="eventType" required>
+          <option value="">Select Event Type</option>
+          <option>Corporate Event</option>
+          <option>Wedding / Party</option>
+          <option>Cultural / Entertainment</option>
+          <option>Virtual / Hybrid Event</option>
+          <option>MICE Services</option>
+        </select>
+        <label>Services Needed</label>
+        <select name="services" required>
+          <option value="">Select Services</option>
+          <option>Venue Selection</option>
+          <option>Invitation Card</option>
+          <option>Entertainment</option>
+          <option>Food & Drinks</option>
+          <option>Photos & Videos</option>
+          <option>Custom Food</option>
+          <option>Stage Decoration</option>
+          <option>Event Coordination</option>
+        </select>
+        <label>Date & Time</label>
+        <input type="datetime-local" name="datetime" required>
+        <label>Description</label>
+        <textarea name="description" rows="3" required></textarea>
+        <label>Email</label>
+        <input type="email" name="email" required>
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required>
+        <button type="submit">Submit Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 MakeItRight Events | All Rights Reserved
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.9)' : 'rgba(0,0,0,0.6)';
+    });
+
+    function showEvents(type){
+      document.getElementById('indoor').style.display = type==='indoor' ? 'block':'none';
+      document.getElementById('outdoor').style.display = type==='outdoor' ? 'block':'none';
+      const buttons=document.querySelectorAll('.event-buttons button');
+      buttons.forEach(btn=>btn.classList.remove('active-btn'));
+      buttons[type==='indoor'?0:1].classList.add('active-btn');
+    }
+
+    const openForm = document.getElementById('openForm');
+    const modalForm = document.getElementById('modalForm');
+    const closeForm = document.getElementById('closeForm');
+
+    openForm.addEventListener('click', ()=> modalForm.style.display='flex');
+    closeForm.addEventListener('click', ()=> modalForm.style.display='none');
+    window.addEventListener('click', e => { if(e.target===modalForm) modalForm.style.display='none'; });
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      const eventType = form.eventType.value;
+      const services = form.services.value;
+      const datetime = form.datetime.value;
+      const description = form.description.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+
+      if(!name || !eventType || !services || !datetime || !description || !email || !phone){
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      alert(`Thank you ${name}!\nYour booking for "${eventType}" with services: "${services}" has been received.\nWe will contact you soon.`);
+      form.reset();
+      modalForm.style.display='none';
+    });
+  </script>
+</body>
+</html>

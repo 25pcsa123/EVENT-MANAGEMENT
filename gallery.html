@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — MakeItRight Event Management</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+	<style>
+    :root {
+      --primary: #ff0077;
+      --secondary: #ffc107;
+      --dark: #1b1b1b;
+      --light: #ffffff;
+    }
+
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
+    body {background-color: var(--dark); color: var(--light);}
+    
+    header 
+	{
+		  position: fixed; top:0; width:100%;
+		  background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+		  display:flex; justify-content:space-between; align-items:center; padding:15px 70px; z-index:1000;
+	}
+    header h1 
+	{
+		color: var(--secondary);
+		font-size:1.8rem;
+	}
+	.logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--secondary);
+      background: #fff;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+    }
+
+
+
+    nav ul 
+	{
+		list-style:none;
+		display:flex;
+		gap:30px;
+	}
+    nav ul li a 
+	{
+		text-decoration:none;
+		color: var(--light);
+		font-weight:500;
+		transition:0.3s;
+	}
+    nav ul li a:hover 
+	{
+	color: var(--secondary);
+	}
+
+    .hero {
+      background: url('images/weedingss.jpg') center/cover no-repeat;
+      height: 60vh; display:flex; align-items:center; justify-content:center; position:relative;
+    }
+    .hero::after {content: ''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);}
+    .hero h2 {position:relative; z-index:1; font-size:2.8rem; color: var(--secondary); animation: fadeIn 2s ease-in-out;}
+
+    .gallery-section {padding: 100px 60px; margin-top: -40px;}
+    .section-title {text-align:center; font-size:2rem; color: var(--secondary); margin-bottom:50px;}
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.07);
+      filter: brightness(0.85);
+    }
+
+    /* LIGHTBOX MODAL */
+    .lightbox {
+      display:none;
+      position:fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.9);
+      justify-content:center; align-items:center;
+      z-index:2000;
+    }
+    .lightbox img {
+      max-width:90%; max-height:80%;
+      border-radius:10px;
+    }
+    .close, .prev, .next {
+      position:absolute; top:50%;
+      transform:translateY(-50%);
+      color:#fff; font-size:2rem; cursor:pointer; user-select:none; padding:10px;
+      background: rgba(0,0,0,0.4); border-radius:50%;
+    }
+    .close {top:20px; right:30px; transform:none;}
+    .prev {left:30px;}
+    .next {right:30px;}
+
+    footer {background: #000; text-align:center; padding:20px; color:#aaa; font-size:0.9rem; margin-top:50px;}
+    
+    @keyframes fadeIn {from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);}}
+
+    
+	</style>
+</head>
+<body>
+	 <header>
+	<div class="logo">
+      <img src="images/logo's.jpg" alt="Event Logo">
+      <h1><b>MakeItRight Events</b></h1>
+    </div>
+   <nav>
+    <ul>
+      <li><a href="index.html">Index</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html" style="color: var(--secondary);">Gallery</a></li>
+	  <li><a href="blog.html">Blog</a></li>
+      <li><a href="prize.html">Prize</a></li>
+      <li><a href="review.html">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Event Moments Gallery</h2>
+</section>
+<p style="text-align:center; color:#ccc; margin-top:20px; max-width:900px; margin-left:auto; margin-right:auto; font-size:1.1rem;">
+   our collection of events — weddings, birthdays, corporate gatherings, and outdoor celebrations. Each photo captures a special moment, decoration setup, or entertainment highlight.
+</p>
+
+<section class="gallery-section">
+  <h3 class="section-title">Our Captured Memories</h3>
+<div class="gallery">
+  <div class="gallery-item">
+    <img src="images/weeding.jpg" alt="Wedding Event">
+    <p>Elegant Wedding Ceremony</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/birth.jpg" alt="Birthday Party">
+    <p>Birthday Celebration</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/privates.jpg" alt="Corporate Event">
+    <p>Corporate Gathering</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/stagess.jpg" alt="Stage Setup">
+    <p>Stage Decoration & Setup</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/buffet.jpg" alt="Buffet Setup">
+    <p>Buffet & Dining Arrangement</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/weedingss.jpg" alt="Outdoor Wedding">
+    <p>Outdoor Wedding Venue</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/party.jpg" alt="Music Entertainment">
+    <p>Live Music Entertainment</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/catering.jpg" alt="Dinner Party">
+    <p>Dinner & Catering Setup</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/weedings.jpg" alt="Lighting Decoration">
+    <p>Event Lighting & Ambiance</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/outdoor.jpg" alt="Decor Setup 1">
+    <p>Outdoor Decor Setup</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/work1.jpg" alt="Decor Setup 2">
+    <p>Floral Arrangement & Decor</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/flower.jpg" alt="Decor Setup 3">
+    <p>Flower Decoration Highlights</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/lighting.jpg" alt="Event Highlight 1">
+    <p>Lighting Effects & Stage</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/outdoor party.jpg" alt="Event Highlight 2">
+    <p>Outdoor Party Celebration</p>
+  </div>
+  <div class="gallery-item">
+    <img src="images/work2.jpg" alt="Event Highlight 3">
+    <p>Decor & Event Highlights</p>
+  </div>
+</div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox">
+  <span class="close" id="close">&times;</span>
+  <span class="prev" id="prev">&#10094;</span>
+  <img src="images/lightingss.jpg" alt="Large View" id="lightbox-img">
+  <span class="next" id="next">&#10095;</span>
+</div>
+
+<footer>
+  &copy; 2025 MakeItRight Events
+</footer>
+
+<script>
+const galleryImages = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('close');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+
+let currentIndex = 0;
+
+// Open lightbox
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+    currentIndex = index;
+  });
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', () => { lightbox.style.display = 'none'; });
+
+// Next image
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentIndex].src;
+});
+
+// Previous image
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  lightboxImg.src = galleryImages[currentIndex].src;
+});
+
+// Close on outside click
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox) lightbox.style.display = 'none';
+});
+
+// Scroll header effect
+window.addEventListener('scroll', () => {
+  document.querySelector('header').style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.9)' : 'rgba(0,0,0,0.6)';
+});
+</script>
+
+</body>
+</html>

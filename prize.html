@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prize / Packages — MakeItRight Event Management</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff0077;
+      --secondary: #ffc107;
+      --dark: #1b1b1b;
+      --light: #ffffff;
+      --card-bg: #222;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 70px;
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: var(--secondary);
+      font-size: 1.8rem;
+    }
+	.logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--secondary);
+      background: #fff;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      color: var(--secondary);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--light);
+	  font-size: 1.1rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--secondary);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: url('images/outdoor.jpg') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .hero h2 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.8rem;
+      color: var(--secondary);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* ---------- PACKAGES SECTION ---------- */
+    .packages {
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: -50px;
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.1);
+    }
+
+    .package-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .package-content {
+      padding: 20px;
+    }
+
+    .package-content h3 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+
+    .package-content p {
+      color: #ccc;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeIn
+	{
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+ <header>
+	<div class="logo">
+      <img src="images/logo's.jpg" alt="Event Logo">
+      <h1><b>MakeItRight Events</b></h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+		<li><a href="blog.html">Blog</a></li>
+        <li><a href="prize.html" style="color: var(--secondary);">Prize</a></li>
+        <li><a href="review.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Our Event Packages</h2>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="packages">
+    <!-- Basic Package -->
+    <div class="package-card">
+      <div class="package-content">
+        <h3>Basic Package</h3>
+        <p>Perfect for small gatherings and birthday parties. Includes venue, basic decorations, and food for up to 50 guests.</p>
+        <div class="price">₹25,000</div>
+      </div>
+    </div>
+
+    <!-- Standard Package -->
+    <div class="package-card">
+      <div class="package-content">
+        <h3>Standard Package</h3>
+        <p>Includes venue, professional decorations, catering, entertainment, and basic photography for up to 100 guests.</p>
+        <div class="price">₹50,000</div>
+      </div>
+    </div>
+
+    <!-- Premium Package -->
+    <div class="package-card">
+      <div class="package-content">
+        <h3>Premium Package</h3>
+        <p>All-inclusive package with luxurious venue, advanced décor, premium catering, entertainment, photography & videography for up to 200 guests.</p>
+        <div class="price">₹1,00,000</div>
+      </div>
+    </div>
+
+    <!-- Corporate Package -->
+    <div class="package-card">
+      <div class="package-content">
+        <h3>Corporate Package</h3>
+        <p>Ideal for corporate events, product launches, and seminars. Includes venue, branding, catering, entertainment, and AV support for up to 300 attendees.</p>
+        <div class="price">₹1,50,000</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 MakeItRight Events 
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.9)' : 'rgba(0,0,0,0.6)';
+    });
+  </script>
+</body>
+</html>
+
